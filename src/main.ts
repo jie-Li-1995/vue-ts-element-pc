@@ -3,10 +3,15 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import ElementUI, { Loading } from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
-import './assets/css/init.css'
+import '@/theme/index.css'
+import '@/assets/css/init.css'
+import '@/assets/css/fonts.css'
+import '@/assets/iconfont/iconfont.css'
 import { roles, token } from '@/utils'
 import axios from 'axios'
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+// @ts-ignore
+import locale from 'element-ui/lib/locale/lang/en.js'
 import VueAxios from 'vue-axios'
 
 interface BaseConfig {
@@ -32,8 +37,7 @@ const loadingOptions = {
   fullscreen: true,
   text: 'loading...'
 }
-let loadingService = {
-}
+let loadingService = {}
 let request = 0
 
 axios.interceptors.request.use(
@@ -70,23 +74,23 @@ axios.interceptors.response.use(
         loadingService.close()
       }, 500)
     }
-    console.log(response)
     return response
   },
   error => {
+    request--
+    if (request === 0) {
+      setTimeout(() => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // @ts-ignore
+        loadingService.close()
+      }, 500)
+    }
     return Promise.reject(error)
   })
 
-Vue.directive('role', {
-  bind: function (el, binding, vnode) {
-    if (roles.check(binding.value)) {
-      el.style.display = 'none'
-    }
-  }
-})
-
 Vue.config.productionTip = false
-Vue.use(ElementUI)
+Vue.use(ElementUI, { locale })
+Vue.use(VueAxios, axios)
 
 Vue.directive('role', {
   bind: function (el, binding, vnode) {

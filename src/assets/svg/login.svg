@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>icon grey/login</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0 16 18 16 18 0 0 0"></polygon>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon-grey/login">
+            <g id="Page-1" transform="translate(3.000000, 4.000000)">
+                <polygon id="Fill-1" fill="#999999" points="12 8 14 8 14 6 12 6"></polygon>
+                <polygon id="Fill-2" fill="#999999" points="12 12 14 12 14 10 12 10"></polygon>
+                <polygon id="Fill-3" fill="#999999" points="8 12 10 12 10 10 8 10"></polygon>
+                <polygon id="Fill-4" fill="#999999" points="8 8 10 8 10 6 8 6"></polygon>
+                <g id="Group-12">
+                    <path d="M16,8 L16,4 L2,4 L2,14 L16,14 L16,10 L16,8 Z M17,2 C17.552,2 18,2.447 18,3 L18,15 C18,15.553 17.552,16 17,16 L1,16 C0.448,16 0,15.553 0,15 L0,3 C0,2.447 0.448,2 1,2 L17,2 Z" id="Fill-5" fill="#999999"></path>
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Clip-8"></g>
+                    <polygon id="Fill-7" fill="#999999" mask="url(#mask-2)" points="4 12 6 12 6 10 4 10"></polygon>
+                    <polygon id="Fill-9" fill="#999999" mask="url(#mask-2)" points="4 8 6 8 6 6 4 6"></polygon>
+                    <polygon id="Fill-10" fill="#999999" mask="url(#mask-2)" points="3 2 6 2 6 0 3 0"></polygon>
+                    <polygon id="Fill-11" fill="#999999" mask="url(#mask-2)" points="12 2 15 2 15 0 12 0"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

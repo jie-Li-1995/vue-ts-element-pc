@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>icon /publish</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="12.373 10.0002165 12.373 -3.55271368e-15 -0.0001 0 -0.0001 10.0002165 12.373 10.0002165"></polygon>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon-/publish">
+            <g id="Page-1" transform="translate(4.000000, 1.000000)">
+                <g id="Group-3" transform="translate(4.000000, 2.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Clip-2"></g>
+                    <path d="M11.7539,0 C12.3039,0 12.5309,0.379 12.2569,0.857 L10.2489,4.365 C9.9749,4.843 9.9749,5.621 10.2489,6.099 L12.2569,9.372 C12.5309,9.85 12.3039,10 11.7539,10 L1.4379,10 C0.8879,10 -0.0001,10.027 -0.0001,9.478 L-0.0001,0.978 C-0.0001,0.428 0.8879,0 1.4379,0 L11.7539,0 Z" id="Fill-1" fill="#00ADEF" mask="url(#mask-2)"></path>
+                </g>
+                <path d="M4.5,0 L4.5,18" id="Stroke-4" stroke="#00ADEF" stroke-width="3"></path>
+                <path d="M0,19.5 L9,19.5" id="Stroke-6" stroke="#00ADEF" stroke-width="3"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,184 @@
+{
+  "id": "951070",
+  "name": "h6",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "10268517",
+      "name": "报告查询",
+      "font_class": "baogaochaxun",
+      "unicode": "e674",
+      "unicode_decimal": 58996
+    },
+    {
+      "icon_id": "1025601",
+      "name": "删除",
+      "font_class": "shanchu",
+      "unicode": "e622",
+      "unicode_decimal": 58914
+    },
+    {
+      "icon_id": "7550210",
+      "name": "添加",
+      "font_class": "tianjia",
+      "unicode": "e68a",
+      "unicode_decimal": 59018
+    },
+    {
+      "icon_id": "1613452",
+      "name": "验证码",
+      "font_class": "yanzhengma",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "3545533",
+      "name": "九宫格",
+      "font_class": "jiugongge",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "3607026",
+      "name": "绿洲_分支场所",
+      "font_class": "lvzhou_fenzhichangsuo",
+      "unicode": "e624",
+      "unicode_decimal": 58916
+    },
+    {
+      "icon_id": "7275156",
+      "name": "Minus (with circle) ",
+      "font_class": "Minuswithcircle",
+      "unicode": "e64a",
+      "unicode_decimal": 58954
+    },
+    {
+      "icon_id": "1211217",
+      "name": "Add",
+      "font_class": "add",
+      "unicode": "e621",
+      "unicode_decimal": 58913
+    },
+    {
+      "icon_id": "705689",
+      "name": "锁",
+      "font_class": "suo",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "5327639",
+      "name": "卡车",
+      "font_class": "qiache",
+      "unicode": "e73b",
+      "unicode_decimal": 59195
+    },
+    {
+      "icon_id": "680987",
+      "name": "书",
+      "font_class": "shu",
+      "unicode": "e726",
+      "unicode_decimal": 59174
+    },
+    {
+      "icon_id": "4933441",
+      "name": "邮箱",
+      "font_class": "youxiang",
+      "unicode": "e769",
+      "unicode_decimal": 59241
+    },
+    {
+      "icon_id": "6992560",
+      "name": "仪表盘",
+      "font_class": "yibiaopan",
+      "unicode": "e834",
+      "unicode_decimal": 59444
+    },
+    {
+      "icon_id": "1027692",
+      "name": "字典",
+      "font_class": "zidian",
+      "unicode": "e75d",
+      "unicode_decimal": 59229
+    },
+    {
+      "icon_id": "5688547",
+      "name": "批量导出",
+      "font_class": "piliangdaochu",
+      "unicode": "e7f3",
+      "unicode_decimal": 59379
+    },
+    {
+      "icon_id": "212768",
+      "name": "overview_monitor",
+      "font_class": "overviewmonitor",
+      "unicode": "ea31",
+      "unicode_decimal": 59953
+    },
+    {
+      "icon_id": "1068435",
+      "name": "view",
+      "font_class": "view1",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "615453",
+      "name": "clear",
+      "font_class": "shouyeicon04",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "903820",
+      "name": "通知",
+      "font_class": "tongzhi",
+      "unicode": "e673",
+      "unicode_decimal": 58995
+    },
+    {
+      "icon_id": "1979128",
+      "name": "收 藏",
+      "font_class": "shoucang",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "2049583",
+      "name": "通知",
+      "font_class": "tongzhi1",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "2070751",
+      "name": "导出",
+      "font_class": "daochu",
+      "unicode": "e696",
+      "unicode_decimal": 59030
+    },
+    {
+      "icon_id": "2507001",
+      "name": "详情",
+      "font_class": "xiangqing",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "2681258",
+      "name": "编辑",
+      "font_class": "bianji",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "4362545",
+      "name": "copy",
+      "font_class": "copy",
+      "unicode": "e7aa",
+      "unicode_decimal": 59306
+    }
+  ]
+}

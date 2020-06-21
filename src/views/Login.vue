@@ -1,196 +1,300 @@
 <template>
-  <div class="login">
-    <div class="wrap">
-      <div class="showLogo">
-        <img class="logo" src="@/assets/img/Logo.jpg" alt=""/>
-        <div class="text">
-          <p>Welcome to </p>
-          <p>Siemens SFLL</p>
-        </div>
+  <div id="login">
+    <div class="H6Logo"><img src="@/assets/img/H6-logo.png" alt=""></div>
+    <div class="loginMessage">
+      <h2 class="title">
+        {{pName}}&nbsp;
+        <span style="font-size: 14px">{{SystemVersion}}</span>
+      </h2>
+      <div class="left LoginDiv">Log In</div>
+      <div>
+        <el-input
+          prefix-icon="icon-user"
+          placeholder="Windows ID"
+          v-model="params.Name"
+          autofocus="autofocus"/>
       </div>
-      <div class="loginBox">
-        <p>LOGIN</p>
-        <p>It’s so nice to see you！</p>
+      <div>
         <el-input
-          class="item"
-          ref="username"
-          v-model.trim="params.Name"
-          placeholder="UserName"
-          autofocus="autofocus"
-        />
-        <el-input
-          class="item"
-          ref="password"
-          v-model.trim="params.Password"
-          type="Password"
           placeholder="Password"
-          @keyup.enter="login"
-        />
-        <el-button v-if="clickedLogin" class="btn" icon="el-icon-loading" disabled>Login</el-button>
-        <el-button v-else class="btn" @click="beforeLogin">Login</el-button>
+          prefix-icon="icon-key"
+          :type="eye ? 'text':'password'"
+          v-model="params.Password">
+          <div slot="append" class="LoginRight" @click="EyeClick" :class="{active:eye}">
+            <i class="fa fa-eye-slash" aria-hidden="true" v-if="!eye"></i>
+            <i class="fa fa-eye" aria-hidden="true" v-if="eye"></i>
+          </div>
+        </el-input>
+      </div>
+      <div class="verificationDiv">
+        <el-input
+          placeholder="Verification code"
+          prefix-icon="iconfont icon-yanzhengma"
+          v-model="params.Code"
+          @keyup.enter.native="successLogin"/>
+        <span
+          @click="toggleCode"
+          class="VerificationCodeSpan"
+          :style="{'background-image': inputCode}"/>
+      </div>
+      <div
+        class="right"
+        style="text-align:right;"
+        @click="resetPassword">
+        <span class="ForgotPassword">Forget password</span>
+      </div>
+      <div class="spaceBetween">
+        <div style="position:relative">
+          <el-button @click="goRegister" class="DefaultBtn">Sign up</el-button>
+          <div style="display: inline-block;position:absolute;top: 6px;left: 73px;">
+            <el-tooltip content="Help" placement="top">
+              <i class="el-icon-question" @click="goPdf" style="cursor: pointer;color:#00677f;font-size:22px;"/>
+            </el-tooltip>
+          </div>
+        </div>
+        <div>
+          <el-button @click="successLogin" class="SignUpBtn">Login</el-button>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { LoginApi } from '@/api/index.ts'
+import { LoginApi } from '@/api'
+import { userInfo, role } from '@/utils'
 import { Component, Vue, Ref } from 'vue-property-decorator'
 import { Input } from 'element-ui'
-
-interface BaseObject {
-  Language: string;
-
-  [propName: string]: string | number | boolean;
-}
+import $ccw from 'liu_qihao'
 
 @Component
 export default class Login extends Vue {
-  clickedLogin = false
-  params: BaseObject = {
-    Language: 'zh',
+  eye = false
+  inputCode = ''
+  pName = 'System Name'
+  SystemVersion = ''
+  params = {
     Name: '',
-    Password: ''
+    Password: '',
+    Code: '',
+    ECode: ''
   }
 
   @Ref('username') ref_username!: Input
   @Ref('password') ref_password!: Input
 
   mounted (): void {
-    console.log(Input)
-    console.log(this)
+    this.getSystemName()
+    this.toggleCode()
+    console.log($ccw.NumberRound(-100.52))
   }
 
-  beforeLogin () {
-    this.clickedLogin = true
-    if (!this.params.Name) {
-      this.$message.warning('Please  enter UserName')
-      this.clickedLogin = false
-      this.ref_username.focus()
-      console.log(this.ref_username)
-    } else if (!this.params.Password) {
-      this.$message.warning('Please  enter Password')
-      this.clickedLogin = false
-      this.ref_password.focus()
-    } else {
-      this.login()
+  async getSystemName () {
+    const res = await LoginApi.GetSystemName()
+    if (res.data.Success) {
+      this.SystemVersion = res.data.Data.Version || ''
+      this.pName = res.data.Data.SystemNameEn || ''
     }
   }
 
-  async login () {
-    try {
-      const res = await LoginApi.SFLLLogin(this.params)
+  async toggleCode () {
+    const res = await LoginApi.GetVCode()
+    if (res.data.Success) {
+      this.inputCode = 'url(' + res.data.Data.Img + ')'
+      this.params.ECode = res.data.Data.Code
+    }
+  }
+
+  goPdf () {
+    window.open('/Help/Registration.pdf', 'new')
+  }
+
+  EyeClick () {
+    this.eye = (!this.eye)
+  }
+
+  async successLogin () {
+    if (!this.params.Name) {
+      this.$message.error('Please enter your Windows ID')
+    } else if (!this.params.Password) {
+      this.$message.error('Please enter your password')
+    } else if (!this.params.Code) {
+      this.$message.error('Please enter the verification code')
+    } else {
+      const res = await LoginApi.login(this.params)
       if (res.data.Success) {
-        window.localStorage.setItem('userInfo', JSON.stringify(res.data))
-        window.localStorage.setItem('role', res.data.role)
-        this.$router.push({ name: 'Welcome' })
+        userInfo.set(res.data)
+        role.set(res.data.Menus)
+        this.$router.push({ name: 'content' })
       } else {
         this.$message.error(res.data.Message)
-        this.clickedLogin = false
+        this.toggleCode()
       }
-    } catch (e) {
-      this.clickedLogin = false
     }
+  }
+
+  resetPassword () {
+    this.$router.push({ name: 'PasswordAd' })
+  }
+
+  goRegister () {
+    this.$router.push({ name: 'RegisterAd' })
   }
 }
 </script>
 
 <style lang="less" scoped>
-  .login {
+  #login {
     height: 100vh;
-    background-image: url(../assets/img/bg1.jpg);
+    background: #000 url(../assets/img/Logo-bg3.jpg) no-repeat;
     background-size: 100% 100%;
 
-    .wrap {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 1440px;
+    .el-input__prefix {
+      i {
+        font-size: 20px;
 
-      .showLogo {
-        float: left;
-        position: relative;
-        width: 742px;
-        height: 540px;
-        margin-right: 1px;
-        background-image: url(../assets/img/login-show.png);
-
-        .logo {
-          position: absolute;
-          top: 22px;
-          left: 28px;
-        }
-
-        .text {
-          position: absolute;
-          top: 311px;
-          left: 53px;
-          color: #fff;
-          text-align: left;
-
-          p:first-child {
-            font-size: 50px;
-            line-height: 60px;
-          }
-
-          p:last-child {
-            font-size: 40px;
-            line-height: 60px;
-          }
+        &.iconfont {
+          color: #262626;
+          font-size: 22px !important;
         }
       }
+    }
 
-      .loginBox {
-        float: left;
-        width: 522px;
-        height: 540px;
+    .el-button {
+      padding: 11px 10px;
+    }
+
+    .el-input__icon {
+      line-height: 36px;
+    }
+
+    .el-input__inner {
+      background: #010203;
+      border: 1px solid #010203;
+      color: #fff;
+      border-radius: 2px;
+    }
+
+    i {
+      width: 20px;
+      color: #333333;
+      font-size: 18px;
+    }
+
+    input::-webkit-input-placeholder {
+      color: #666 !important;
+      font-style: oblique;
+    }
+
+    .H6Logo {
+      position: absolute;
+      left: 80px;
+      top: 50px;
+      width: 200px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .LoginRight.active {
+      i {
+        color: #00ADEF;
+      }
+    }
+
+    .el-input-group__append {
+      background: #1A1A1A;
+      border: none;
+      cursor: pointer;
+    }
+
+    .footer {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      color: #9F9F9F;
+      text-align: left;
+      height: 50px;
+      line-height: 50px;
+      padding-left: 100px;
+      background: rgba(0, 0, 0, 0.5);
+      border-top: 1px solid #555657;
+    }
+
+    .LoginDiv {
+      color: #F4F4F4;
+      margin-top: 15px;
+    }
+
+    .loginMessage .spaceBetween {
+      margin-bottom: 20px;
+    }
+
+    .spaceBetween {
+      border-top: 1px solid #3A393A;
+      padding-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 16px;
+
+    }
+
+    .ForgotPassword {
+      color: #0384a8;
+      cursor: pointer;
+    }
+
+    .verificationDiv {
+      position: relative;
+
+      .VerificationCodeSpan {
+        cursor: pointer;
+        position: absolute;
+        display: inline-block;
+        height: 34px;
+        width: 60px;
+        right: 10px;
+        top: 1px;
+        font-size: 0
+      }
+
+      .el-input__inner {
+        padding-right: 80px;
+
+      }
+    }
+
+    .el-input__inner {
+      background: #010203;
+      color: #fff;
+      font-weight: normal !important;
+    }
+
+    .loginMessage {
+      position: absolute;
+      top: 50%;
+      left: 75%;
+      margin-left: -200px;
+      margin-top: -287px;
+      box-sizing: border-box;
+      width: 400px;
+      padding: 40px;
+      background: rgba(0, 0, 0, 0.5);
+      border-top: 2px solid #3D3D3D;
+
+      > div {
+        margin-bottom: 16px;
+      }
+
+      h2 {
         text-align: left;
-        padding: 163px 0 0 58px;
-        box-sizing: border-box;
-
-        p:first-child {
-          color: #475669;
-          font-size: 24px;
-          line-height: 29px;
-          margin-bottom: 3px;
-        }
-
-        p:nth-child(2) {
-          color: #879BAA;
-          font-size: 16px;
-          line-height: 19px;
-          margin-bottom: 18.6px;
-        }
-
-        .item {
-          width: 401px;
-          height: 44px;
-          border-radius: 4px;
-          border: 1px solid #EBF0F5;
-          margin-bottom: 12px;
-          font-size: 14px;
-          line-height: 17px;
-          padding: 11px 0 16px 16px;
-          box-sizing: border-box;
-          color: #879BAA;
-          outline: none;
-        }
-
-        .btn {
-          width: 162px;
-          height: 45px;
-          background-image: linear-gradient(-90deg, #50BEBE 0%, #009999 39%, #0099CB 69%, #0099B0 100%);
-          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.32);
-          border-radius: 4px;
-          color: #fff;
-          font-size: 16px;
-          margin-left: 239px;
-
-          &.el-button.is-disabled {
-            border-color: #BECDD7 !important;
-          }
-        }
+        font-size: 40px;
+        margin: 0;
+        padding: 20px 0;
+        font-weight: normal;
+        color: #FFFFFF;
       }
     }
   }

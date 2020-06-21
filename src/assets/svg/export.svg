@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>icon grey/export</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="17 0 17 5 8.50025 5 0.0005 5 0.0005 0"></polygon>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon-grey/export">
+            <g id="Page-1" transform="translate(4.000000, 3.000000)">
+                <path d="M11.0537,8.9717 L11.0537,5.2687 L13.4857,5.2687 C13.8977,5.2687 14.1107,4.7777 13.8297,4.4777 L9.0457,0.1497 C8.8597,-0.0493 8.5447,-0.0493 8.3587,0.1497 L3.5747,4.4777 C3.2937,4.7777 3.5067,5.2687 3.9177,5.2687 L6.3507,5.2687 L6.3507,8.9717" id="Fill-1" fill="#999999"></path>
+                <g id="Group-5" transform="translate(0.000000, 11.074200)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Clip-4"></g>
+                    <path d="M6.4375,3.875 C5.7125,3.875 5.1255,3.287 5.1255,2.563 C5.1255,1.838 5.7125,1.25 6.4375,1.25 C7.1625,1.25 7.7495,1.838 7.7495,2.563 C7.7495,3.287 7.1625,3.875 6.4375,3.875 M2.4375,3.875 C1.7125,3.875 1.1255,3.287 1.1255,2.563 C1.1255,1.838 1.7125,1.25 2.4375,1.25 C3.1625,1.25 3.7495,1.838 3.7495,2.563 C3.7495,3.287 3.1625,3.875 2.4375,3.875 M16.0005,0 L1.0005,0 C0.4475,0 0.0005,0.447 0.0005,1 L0.0005,4 C0.0005,4.553 0.4475,5 1.0005,5 L16.0005,5 C16.5525,5 17.0005,4.553 17.0005,4 L17.0005,1 C17.0005,0.447 16.5525,0 16.0005,0" id="Fill-3" fill="#999999" mask="url(#mask-2)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

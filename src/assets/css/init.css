@@ -1,0 +1,83 @@
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.clear-fix::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    clear: both;
+}
+
+.flr {
+    float: right;
+}
+
+.fll {
+    float: left;
+}
+
+.relative {
+    position: relative;
+}
+
+.tar {
+    text-align: right;
+}
+
+.tac {
+    text-align: center;
+}
+
+.tal {
+    text-align: left;
+}
+
+/*滚动条的宽度*/
+.scroll_line {
+    overflow-y: auto;
+}
+
+.scroll_line::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+}
+
+/*外层轨道。可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果*/
+
+.scroll_line::-webkit-scrollbar-track {
+    width: 6px;
+    background-color: #0d1b20;
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius: 2em;
+}
+
+/*滚动条的设置*/
+
+.scroll_line::-webkit-scrollbar-thumb {
+    background-color: #0384a8;
+    background-clip: padding-box;
+    min-height: 28px;
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius: 2em;
+}
+
+/*滚动条移上去的背景*/
+
+.scroll_line::-webkit-scrollbar-thumb:hover {
+    background-color: #0384a8;
+}

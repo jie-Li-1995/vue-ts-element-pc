@@ -5,8 +5,15 @@ export interface BaseObject {
   roles: string[];
   RolesSign: string[];
   Industrys: string[];
-  [propName: string]: string | number | boolean | string[];
+
+  [index: string]: string | number | boolean | string[];
 }
+
+export interface NormalObject {
+  [index: string]: string | number | boolean | string[] | NormalObject[];
+}
+
+export const pageSize = [25, 50, 100]
 
 export const token = {
   set: function (t: string): void {
@@ -36,7 +43,7 @@ export const userInfo = {
 export const roles = {
   check: function (role: string) {
     let disabled = true
-    const roles = (userInfo.get() as BaseObject).RolesSign
+    const roles = role
     const rList: string[] = role.split('|')
     for (let i = 0; i < rList.length; i++) {
       if (roles.includes(rList[i])) {
@@ -49,12 +56,12 @@ export const roles = {
 }
 
 export const role = {
-  set: function (u: [string]): void {
-    window.localStorage.setItem('role', JSON.stringify(u))
+  set: function (u: string): void {
+    window.localStorage.setItem('role', u)
   },
-  get: function (): [string] {
+  get: function (): string[] {
     const user: string = window.localStorage.getItem('role') || ''
-    return JSON.parse(user)
+    return user.split(',')
   },
   clear: function (): void {
     window.localStorage.removeItem('role')

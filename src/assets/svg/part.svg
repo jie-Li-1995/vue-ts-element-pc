@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>icon grey/part</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon-grey/part" fill="#999999">
+            <g id="Page-1" transform="translate(4.000000, 7.000000)">
+                <polygon id="Fill-1" points="0 2 13 2 13 0 0 0"></polygon>
+                <polygon id="Fill-2" points="0 6 16 6 16 3.999 0 3.999"></polygon>
+                <polygon id="Fill-3" points="0 10 10 10 10 8 0 8"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>
